@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telephone directory</title>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <nav class="navbar navbar-dark bg-dark navbar-expand-lg fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand navbar-item-text" href="index.html">Telephone directory</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <div class="d-flex">
+                        <a class="nav-link navbar-item-text ms-1" aria-current="page" data-bs-toggle="modal" data-bs-target="#AboutModal" href="">About us</a>
+                    </div>
+
+                    <div class="d-flex">
+                        <a class="nav-link navbar-item-text ms-1" aria-current="page" href="profile.html">Profile</a>
+                    </div>
+                </ul>
+
+                <button class="btn btn-dark navbar-item-text" onclick="window.location.href='login.html';">Sign out</button>
+            </div>
+
+        </div>
+    </nav>
+
+    <div class="modal fade" id="AboutModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">                
+            <div class="modal-content mt-4 pt-1" style="background-color: #526D82;">
+                <div class="modal-header text-light" style="background-color: #526D82;">
+                    <h5 class="modal-title">About us</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                <div class="modal-body">
+                    <div class="card user-card-full">
+                        <div class="card-block text-white" style="background-color: #27374D;">
+                            <div>
+                                <span>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Culpa qui iste quia hic officia cum animi, nihil dignissimos, nisi explicabo, laborum consequatur esse a? Sapiente aperiam fugiat accusamus nisi officia?</span>
+                            </div>
+                            <div class="mt-2">
+                                <span>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatum nulla recusandae eaque eveniet quam accusantium dolorem quasi sint nobis fuga quaerat vitae sunt dignissimos ipsum rerum id, nisi maxime voluptate!</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <header class="page-header mt-5">
+        <div class="container">
+            <div class="row justify-content-center text-center py-5">
+                <div class="header-text col-lg-6">
+                    <h2 class="headline text-uppercase text-decoration-underline">telephone directory</h2>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="main">
+        <div class="container">
+            <div class="row justify-content-center">
+
+                <div id="tools">
+                    <a class="col-12 btn btn-lg btn-success mb-5" onclick="toggleAddContactForm()">Add Contact</a>
+
+                    <script>
+                        function toggleAddContactForm() {
+                            var newUserForm = document.getElementById("form");
+                            if (newUserForm.style.display === "none") {
+                                newUserForm.style.display = "block";
+                            } else {
+                                newUserForm.style.display = "none";
+                            }
+                        }
+
+                        function saveNewContact() {
+                            var newContact = {
+                                name: document.getElementById('name').value,
+                                email: document.getElementById('email').value,
+                                phone: document.getElementById('phone').value,
+                                address: document.getElementById('address').value,
+                                postcode: document.getElementById('postcode').value,
+                            }
+
+                            localStorage.setItem('newContact', JSON.stringify(newContact));
+                            toggleAddContactForm();
+                        }
+                    </script>
+
+                    <form id="form" style="display: none;" class="mx-1 mx-md-4">
+                        <div class="col-md-12 mb-2"><input id="name" type="text" class="form-control" placeholder="Name" value=""></div>
+                        <div class="col-md-12 mb-2"><input id="email" type="text" class="form-control" placeholder="Email" value=""></div>
+                        <div class="col-md-12 mb-2"><input id="phone" type="text" class="form-control" placeholder="Phone" value=""></div>
+                        <div class="col-md-12 mb-2"><input id="address" type="text" class="form-control" placeholder="Address" value=""></div>
+                        <div class="col-md-12 mb-2"><input id="postcode" type="text" class="form-control" placeholder="Postcode" value=""></div>
+    
+                        <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                            <button id="save-contact" type="submit" class="btn btn-secondary btn-lg" onclick="saveNewContact()">Add</button>
+                        </div>
+                    </form>
+
+                </div>
+
+                <div id="contactsWrapper">
+
+                </div>
+
+                <div class="modal fade" id="contacts" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content mt-4" style="background-color: #526D82;">
+                            <div class="modal-header" style="background-color: #526D82;">
+                                <h5 class="modal-title text-white">Information</h5>
+                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+
+                            <div class="modal-body">
+                                <div class="card user-card-full">                                            
+                                    <div class="col-12 text-white" style="background-color: #27374D;">
+                                        <div class="card-block">
+                                            <div class="row">
+                                                <p class="m-b-10 f-w-600">Name <span id="name" class="user-data"></span></p>
+                                                <p class="m-b-10 f-w-600">Email: <span id="email" class="user-data"></span></p>
+                                                <p class="m-b-10 f-w-600">Phone: <span id="mobileNumber" class="user-data"></span></p>
+                                                <p class="m-b-10 f-w-600">Address: <span id="address" class="user-data"></span></p>
+                                                <p class="m-b-20 f-w-600">Postcode: <span id="postcode" class="user-data"></span></p>
+
+                                                <a id="delete-contact" data-bs-dismiss="modal" class="col-12 btn btn-lg btn-danger mb-2">Delete Contact</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <script type="module" src="js/indexController.js"></script>
+
+    <script src="js/bootstrap.min.js"></script>
+</body>
+</html>

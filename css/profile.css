@@ -1,0 +1,49 @@
+.modal-body .card .card-block {
+    padding: 2rem 4rem;
+    border-radius: 5px;
+}
+
+body {
+    background-color: #27374D;
+}
+
+.main {
+    min-height: 100vh;
+}
+
+.navbar-item-text:hover {
+    color: #c0d6e4;
+}
+
+
+.settings {
+    min-height: 100vh;
+}
+
+.form-control {
+    margin-top: 1rem;
+}
+
+.settings-area {
+    background-color: #384f60;
+    border-radius: 20px;
+}
+
+.profile-photo img {
+    width: 70px; 
+    height: 70px; 
+    border-radius: 50%; 
+    object-fit:cover;
+}
+
+.profile-photo img:hover {
+    cursor: pointer;
+}
+
+.headline {
+    color: white;
+}
+
+.navbar-item-text {
+    font-size: 1.3rem;
+}
