@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telephone directory</title>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <nav class="navbar navbar-dark bg-dark navbar-expand-lg fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand navbar-item-text" href="index.html">Telephone directory</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <div class="d-flex">
+                        <a class="nav-link navbar-item-text ms-1" aria-current="page" data-bs-toggle="modal" data-bs-target="#AboutModal" href="">About us</a>
+                    </div>
+
+                    <div class="d-flex">
+                        <a class="nav-link navbar-item-text ms-1" aria-current="page" href="profile.html">Profile</a>
+                    </div>
+                </ul>
+
+                <button class="btn btn-dark navbar-item-text" onclick="window.location.href='login.html';">Sign out</button>
+            </div>
+
+        </div>
+    </nav>
+
+    <div class="modal fade" id="AboutModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">                
+            <div class="modal-content mt-4 pt-1" style="background-color: #526D82;">
+                <div class="modal-header text-light" style="background-color: #526D82;">
+                    <h5 class="modal-title">About us</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                <div class="modal-body">
+                    <div class="card user-card-full">
+                        <div class="card-block text-white" style="background-color: #27374D;">
+                            <div>
+                                <span>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Culpa qui iste quia hic officia cum animi, nihil dignissimos, nisi explicabo, laborum consequatur esse a? Sapiente aperiam fugiat accusamus nisi officia?</span>
+                            </div>
+                            <div class="mt-2">
+                                <span>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatum nulla recusandae eaque eveniet quam accusantium dolorem quasi sint nobis fuga quaerat vitae sunt dignissimos ipsum rerum id, nisi maxime voluptate!</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <header class="page-header mt-5">
+        <div class="container">
+            <div class="row justify-content-center text-center py-5">
+                <div class="header-text col-lg-6">
+                    <h2 class="headline text-uppercase text-decoration-underline">telephone directory</h2>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="main">
+        <div class="container">
+            <div class="row justify-content-center">
+
+                <div id="namesWrapper">
+                    <a class="col-12 btn btn-lg btn-success mb-5">Add Contact</a>                 
+                    
+                    <a class="col-12 name btn btn-lg btn-secondary mb-2" href="#contacts" data-bs-toggle="modal">Bogdan</a>
+                    <a class="col-12 name btn btn-lg btn-secondary mb-2" href="#contacts" data-bs-toggle="modal">Bohdan</a>
+                    <a class="col-12 name btn btn-lg btn-secondary mb-2" href="#contacts" data-bs-toggle="modal">Bohdam</a>
+                    <a class="col-12 name btn btn-lg btn-secondary mb-2" href="#contacts" data-bs-toggle="modal">Bogdam</a>
+
+                    <script>
+                        var names = [];
+
+                        const namesWrapper = document.getElementById('namesWrapper');
+                        const namesList = namesWrapper.getElementsByClassName('name');
+
+                        
+                        addNamesToArray(names, namesList);
+                        sortNames(names);
+
+                        clearNames(namesWrapper);
+                        addButtonAddContact(namesWrapper);
+                        addNamesToHTML(names, namesWrapper)
+
+                        
+                        function addButtonAddContact(namesWrapper) {
+                            const button = `<a class="col-12 btn btn-lg btn-success mb-5" onclick="window.location.href='profile.html';">Add Contact</a>`
+                            namesWrapper.innerHTML += button;
+                        }
+
+                        function clearNames() {
+                            namesWrapper.innerHTML = "";
+                        }
+
+                        function addNamesToArray(names, namesList) {
+                            for(i = 0; i < namesList.length; i++) {
+                                names.push(namesList[i].textContent);
+                            }
+                        }
+
+                        function addNamesToHTML(names, namesWrapper) {
+                            names.forEach(name => {
+                                const newNameElement = createNameContainer(name);
+                                namesWrapper.append(newNameElement);
+                            });
+                        }
+
+                        function sortNames() {
+                            names.sort((a, b) => a.localeCompare(b));
+                        }
+
+                        function createNameContainer(name) {
+                            const container = document.createElement('a');
+                            container.className = "col-12 name btn btn-lg btn-secondary mb-2";
+                            container.textContent = name;
+                            container.href="#contacts"
+                            container.setAttribute("data-bs-toggle", "modal");
+                            return container;
+                        }
+                    </script>
+
+                </div>
+
+                <div class="modal fade" id="contacts" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content mt-4" style="background-color: #526D82;">
+                            <div class="modal-header" style="background-color: #526D82;">
+                                <h5 class="modal-title text-white">Information</h5>
+                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+
+                            <div class="modal-body">
+                                <div class="card user-card-full">                                            
+                                    <div class="col-12 text-white" style="background-color: #27374D;">
+                                        <div class="card-block">
+                                            <div class="row">
+                                                <p class="m-b-10 f-w-600">Name:     <span id="name" class="user-data">Bohdan</span></p>
+                                                <p class="m-b-10 f-w-600">Email:     <span id="email" class="user-data">somemail@gmail.com</span></p>
+                                                <p class="m-b-10 f-w-600">Phone:     <span id="mobileNumber" class="user-data">+380 77 777 77 77</span></p>
+                                                <p class="m-b-10 f-w-600">Address:   <span id="address" class="user-data">Kyiv</span></p>
+                                                <p class="m-b-20 f-w-600">Postcode:  <span id="postcode" class="user-data">7777</span></p>
+
+                                                <a class="col-12 name btn btn-lg btn-danger mb-2" href="profile.html">Delete Contact</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <script src="js/bootstrap.min.js"></script>
+</body>
+</html>

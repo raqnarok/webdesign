@@ -1,0 +1,22 @@
+
+body {
+    background-color: #27374D;
+}
+
+section {
+    min-height: 100vh;
+}
+
+.navbar-item-text:hover {
+    color: #c0d6e4;
+}
+
+.form-control {
+    margin-top: 1rem;
+}
+
+.settings-area {
+    background-color: #384f60;
+    color: #fff;
+    border-radius: 20px;
+}

@@ -1,0 +1,25 @@
+.modal-body .card .card-block {
+    padding: 2rem 4rem;
+    border-radius: 5px;
+}
+
+.main {
+    min-height: 100vh;
+    background-color: #27374D;
+}
+
+header {
+    background-color: #27374D;
+}
+
+.headline {
+    color: white;
+}
+
+.navbar-item-text:hover {
+    color: #c0d6e4;
+}
+
+.navbar-item-text {
+    font-size: 1.3rem;
+}
